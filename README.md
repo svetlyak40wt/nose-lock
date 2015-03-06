@@ -17,6 +17,11 @@ Usage
 Install via `pip install nose-lock`, then run tests
 with argument `--with-lock`.
 
+By default, lock is created as `/tmp/<cur-dir-name>.lock` file,
+but you could override this behaviour using optional parameter
+`--lock-file`:
+
+    nosetests --with-lock --lock-file /tmp/blah-minor
 
 Hack it
 -------

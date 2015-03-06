@@ -8,3 +8,9 @@ You could want this behaviour, when parallel tests will
 interfer for some reason. This could be because they
 go into one database or have other side effects which
 hard to isolate.
+
+Usage
+-----
+
+Install via `pip install nose-lock`, then run tests
+with argument `--with-lock`.

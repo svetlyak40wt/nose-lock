@@ -1,20 +1,19 @@
 from setuptools import setup, find_packages
 
-long_description = open('README.md').read()
-
 try:
     # trying to convert long description from markdown to ReST
     # based on this article: https://coderwall.com/p/qawuyq
+    long_description = open('README.md').read()
 
     import pypandoc
     long_description = pypandoc.convert('README.md', 'rst')
-except ImportError, e:
-    print 'NOPANDOC', e
-    pass
+except Exception:
+    long_description = ''
+
 
 
 setup(name='nose-lock',
-      version='0.2.1',
+      version='0.2.2',
       author='Alxander Artemenko',
       author_email='svetlyak.40wt@gmail.com',
       description=('A plugin for python-nose which locks test execution '

@@ -47,12 +47,16 @@ class NoseLock(Plugin):
                            'please keep calm.').format(owner)
             try:
                 self.lock.acquire()
+                log.info('File {0} locked.'.format(self.lock.lock_file))
+                print 'LOCK:', lock_file
             except KeyboardInterrupt:
                 print '\nYou are so impatient today!\nBye.'
                 sys.exit(1)
 
 
     def finalize(self, result):
-        log.info('Hello pluginized world!')
         if self.lock:
+            import pudb; pudb.set_trace()  # DEBUG
+            print 'UNLOCK', self.lock.lock_file
+            log.info('Unlocking {0}.'.format(self.lock.lock_file))
             self.lock.release()

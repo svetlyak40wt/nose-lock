@@ -16,3 +16,10 @@ Usage
 
 Install via `pip install nose-lock`, then run tests
 with argument `--with-lock`.
+
+
+Hack it
+-------
+
+Fork the project at [GitHub](https://github.com/svetlyak40wt/nose-lock). Don't forget
+to send a pull request or file an issue.

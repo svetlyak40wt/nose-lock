@@ -1,6 +1,8 @@
 Nose Lock
 =========
 
+[![changelog](http://allmychanges.com/p/python/nose-lock/badge/)](http://allmychanges.com/p/python/nose-lock/?utm_source=badge)
+
 This is a plugin for python-nose which locks test execution
 and doesn't allow to run them in parallel from two terminals. 
 

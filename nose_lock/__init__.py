@@ -38,7 +38,6 @@ class NoseLock(Plugin):
             self.lock = None
         else:
             lock_file = options.lock_file
-            print 'USING LOCK', lock_file
             self.lock = FileLock(lock_file)
 
             if self.lock.is_locked():

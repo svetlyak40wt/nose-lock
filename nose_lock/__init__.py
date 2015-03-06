@@ -20,20 +20,29 @@ class NoseLock(Plugin):
 
     def options(self, parser, env=os.environ):
         super(NoseLock, self).options(parser, env=env)
+        # getting reasonable defaults
+        app_dir = os.getcwd()
+        app_name = os.path.basename(app_dir)
+        default_lock_file = os.path.join('/tmp', app_name)
+
+        parser.add_option(
+            '--lock-file', action='store',
+            default=default_lock_file,
+            dest='lock_file',
+            help='Use this file to acquire lock (default: {0})'.format(
+                default_lock_file))
 
     def configure(self, options, conf):
         super(NoseLock, self).configure(options, conf)
         if not self.enabled:
             self.lock = None
         else:
-            # getting reasonable defaults
-            app_dir = os.getcwd()
-            app_name = os.path.basename(app_dir)
-            lock_path = os.path.join('/tmp', app_name)
-            self.lock = FileLock(lock_path)
+            lock_file = options.lock_file
+            print 'USING LOCK', lock_file
+            self.lock = FileLock(lock_file)
 
             if self.lock.is_locked():
-                owner = get_owner(lock_path + '.lock')
+                owner = get_owner(lock_file + '.lock')
                 if owner:
                     print ('User {0} already running the tests, '
                            'please keep calm.').format(owner)
